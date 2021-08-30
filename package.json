@@ -1,0 +1,73 @@
+{
+  "name": "ls.terminal.ink",
+  "version": "14.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "parcel client/index.html -d dist/development",
+    "start": "node dist/server",
+    "server": "node dist/server",
+    "build": "yarn bundle",
+    "bundle": "concurrently \"yarn bundle:client\" \"yarn bundle:server\"",
+    "bundle:gh": "concurrently \"yarn bundle:client-gh\" \"yarn bundle:server-gh\"",
+    "bundle:client": "cross-env BABEL_ENV=client parcel build client/index.html -d dist/ --public-url /",
+    "bundle:server": "cross-env BABEL_ENV=server parcel build server/index.js -d dist/server --public-url / --target=node --no-minify",
+    "bundle:client-gh": "cross-env BABEL_ENV=client parcel build client/index.html -d dist/ --public-url /discordapps.dev/",
+    "bundle:server-gh": "cross-env BABEL_ENV=server parcel build server/index.js -d dist/server --public-url /discordapps.dev/ --target=node --no-minify"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "autoprefixer": "^9.6.1",
+    "express": "^4.17.1",
+    "flat": "^4.1.0",
+    "front-matter": "^3.0.2",
+    "highlight.js": "^9.15.8",
+    "isomorphic-fetch": "^2.2.1",
+    "marked": "^0.7.0",
+    "marksy": "^8.0.0",
+    "node-fetch": "^2.6.0",
+    "postcss-modules": "^1.4.1",
+    "prop-types": "^15.5.4",
+    "react": "^16.0.0-0",
+    "react-app-polyfill": "^1.0.1",
+    "react-dom": "^16.8.6",
+    "react-github-btn": "^1.0.5",
+    "react-helmet": "6.0.0-beta",
+    "react-intl": "^2.9.0",
+    "react-redux": "^7.1.0",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
+    "react-router-hash-link": "^1.2.1",
+    "react-share": "^3.0.0",
+    "react-slick": "^0.24.0",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
+    "rethinkdbdash": "^2.3.31",
+    "slick-slider": "^1.8.2",
+    "twemoji": "^12.0.1",
+    "xss": "^1.0.6"
+  },
+  "resolutions": {},
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "concurrently": "^4.1.1",
+    "cross-env": "^5.2.0",
+    "parcel-bundler": "^1.12.3",
+    "parcel-plugin-static-files-copy": "^2.1.2",
+    "parcel-plugin-sw-precache": "^1.1.1",
+    "react-hot-loader": "^4.12.8",
+    "rimraf": "^2.6.3",
+    "sass": "^1.22.7"
+  },
+  "staticFiles": {
+    "staticPath": "public",
+    "watcherGlob": "**"
+  },
+  "sw-precache": {
+    "templateFilePath": "client/data/ServiceWorkerTemplate.txt"
+  },
+  "main": "index.js",
+  "repository": "https://github.com/terminal/discordapps.dev.git",
+  "author": "7coil <katie@discordmail.com>",
+  "license": "MIT"
+}
